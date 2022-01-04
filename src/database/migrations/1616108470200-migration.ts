@@ -13,6 +13,14 @@ export class migration1616108470200 implements MigrationInterface {
     await queryRunner.query(
       'CREATE TABLE "users_games_games" ("usersId" uuid NOT NULL, "gamesId" uuid NOT NULL, CONSTRAINT "PK_cd4067d574477fd5c7693bc7872" PRIMARY KEY ("usersId", "gamesId"))',
     );
+
+    await queryRunner.query(
+      'CREATE TABLE "geners" ("gender" character varying NOT NULL) FOREIGN KEY ("title") REFERENCES "games"("title")',
+    )
+
+    await queryRunner.query(
+      'CREATE TABLE "orders" ("buy" character varying)" FOREIGN KEY ("id") REFERENCES "users"("id")',
+    )
     await queryRunner.query(
       'CREATE INDEX "IDX_e5263d029d8644de829aae5c35" ON "users_games_games" ("usersId") ',
     );

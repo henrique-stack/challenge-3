@@ -4,6 +4,7 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -27,7 +28,7 @@ export class User {
   @ManyToMany(() => Game, (game) => game.users)
   @JoinTable()
   games: Game[];
-
+ 
   @CreateDateColumn()
   created_at: Date;
 
